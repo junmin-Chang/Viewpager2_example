@@ -4,11 +4,13 @@ import android.text.Layout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_view_pager.view.*
 
 class ViewPagerAdapter(
-    val images: List<Int>
+    val images: List<Int>,
+    val text: List<String>
 ) : RecyclerView.Adapter<ViewPagerAdapter.ViewPagerViewHolder>() {
 
     inner class ViewPagerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
@@ -28,6 +30,9 @@ class ViewPagerAdapter(
     override fun onBindViewHolder(holder: ViewPagerViewHolder, position: Int) {
 
         val curImage = images[position]
+        val currentText = text[position]
         holder.itemView.ivImage.setImageResource(curImage)
+
+        holder.itemView.textView.text = currentText
     }
 }
